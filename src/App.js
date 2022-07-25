@@ -20,9 +20,7 @@ function App() {
   }, [])
   
   if(!user && !redirect) {
-    return (
-      <Loader/>
-    )
+    return <Loader/>
   }
 
   return(

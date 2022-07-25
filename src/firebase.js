@@ -1,6 +1,5 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import { getAuth, signOut, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import toast from "react-hot-toast";
 import { userHandle } from "utils";
@@ -10,18 +9,16 @@ import { userHandle } from "utils";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDL9VdUCY0MkB4YIA2GYBi-W8h8DLCmMvU",
-  authDomain: "instaclone-e0ae6.firebaseapp.com",
-  projectId: "instaclone-e0ae6",
-  storageBucket: "instaclone-e0ae6.appspot.com",
-  messagingSenderId: "3978478731",
-  appId: "1:3978478731:web:29eee1fd242c3ba078c08e",
-  measurementId: "G-1BNPCB0P8G"
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 const auth = getAuth();
 
 onAuthStateChanged(auth, user => {
