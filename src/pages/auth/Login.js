@@ -2,30 +2,46 @@ import React from 'react'
 import { useRef, useEffect, useState } from "react";
 import Input from "../../components/Input.js";
 import {AiFillFacebook} from 'react-icons/ai';
+import { useDispatch } from "react-redux";
+import { useNavigate, useLocation } from "react-router-dom";
+import {setUser} from "store/auth";
+import {login} from "firebase.js";
 
 function Login() {
 
-    const ref = useRef();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const ref = useRef();
 
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-    const enabled = username && password;
+  const enabled = username && password;
   useEffect(() => {
-    let images = ref.current.querySelectorAll('img'),
-    total = images.length,
-    current = 0;
-    const imageSlider = () => {
-      images[(current > 0 ? current : total) -1].classList.add('opacity-0');
-      images[current].classList.remove('opacity-0');
-      current = current === total -1 ? 0 : current + 1;
-    };
-    imageSlider();
-    let interval = setInterval(imageSlider, 3000);
-    return () => {
-      clearInterval(interval);
-    }
+  let images = ref.current.querySelectorAll('img'),
+  total = images.length,
+  current = 0;
+  const imageSlider = () => {
+    images[(current > 0 ? current : total) -1].classList.add('opacity-0');
+    images[current].classList.remove('opacity-0');
+    current = current === total -1 ? 0 : current + 1;
+  };
+  imageSlider();
+  let interval = setInterval(imageSlider, 3000);
+  return () => {
+    clearInterval(interval);
+  }
   }, [ref])
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    await login(username, password)
+
+  /*  navigate(location.state?.return_url || '/' ,  {
+      replace : true
+    })*/
+  }
   
   return (
     <div className="h-full w-full flex flex-wrap overflow-auto items-center gap-x-8 justify-center">
@@ -45,7 +61,7 @@ function Login() {
             <img className='h-[51px]'src='https://www.instagram.com/static/images/web/logged_out_wordmark.png/7a252de00b20.png' alt=''/>
 
           </a>
-          <form className="grid gap-y-1.5">
+          <form onSubmit={handleSubmit} className="grid gap-y-1.5">
             <Input type="text" value={username} label="Phone number, username or email" onChange={ e => setUsername(e.target.value)}/>
             <Input type="password" value={password} label="Password" onChange={ e => setPassword(e.target.value)}/>
             <button type='submit' disabled={!enabled} mt-1 className="h-[30px] rounded bg-brand font-medium text-white text-sm disabled:opacity-50">Log In</button>
@@ -68,7 +84,7 @@ function Login() {
         </div>
       </div>
     </div> 
-    );
+  );
 }
 
 export default Login;
