@@ -9,7 +9,6 @@ import {login} from "firebase.js";
 
 function Login() {
 
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
   const ref = useRef();
@@ -38,9 +37,9 @@ function Login() {
     e.preventDefault();
     await login(username, password)
 
-  /*  navigate(location.state?.return_url || '/' ,  {
+    navigate(location.state?.return_url || '/' ,  {
       replace : true
-    })*/
+    })
   }
   
   return (
