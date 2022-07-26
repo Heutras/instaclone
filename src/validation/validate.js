@@ -1,9 +1,12 @@
- import * as Yup from "yup";
+import * as Yup from "yup"
 
- Yup.setLocale({
-    mixed: {
-        required: "Bu alan zorunludur!"
-    }
- });
+Yup.setLocale({
+	mixed: {
+		required: "Bu alan zorunludur!",
+	},
+	string: {
+		email: "Geçerli bir e-posta adresi girin!"
+	}
+})
 
- export default Yup;
+export default Yup
