@@ -1,7 +1,10 @@
 import React from 'react'
 import {Link} from "react-router-dom";
 import Search from './Search';
+import Icon from './Icon';
+import { NavLink } from 'react-router-dom';
 import { logout } from 'firebase.js';
+
 
 function Header() {
   return (
@@ -11,9 +14,24 @@ function Header() {
           <img className="h-[29px]" src="https://www.instagram.com/static/images/web/logged_out_wordmark.png/7a252de00b20.png" alt="logo"/>
         </Link>
         <Search />
-        <nav>
+        <nav className='flex items-center gap-x-6'>
+          <NavLink to="/">
+            <Icon name="home" size={24}/>
+          </NavLink>
+          <NavLink to="/">
+            <Icon name="dm" size={24}/>
+          </NavLink>
+          <NavLink to="/">
+            <Icon name="new" size={24}/>
+          </NavLink>
+          <NavLink to="/">
+            <Icon name="explore" size={24}/>
+          </NavLink>
+          <NavLink to="/">
+            <Icon name="heart" size={24}/>
+          </NavLink>
           <button onClick={logout}>
-            logout
+            <img src="/no-avatar.jpg" alt="pp" className="w-6 h-6 rounded-full"/>
           </button>
         </nav>
       </div>
