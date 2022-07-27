@@ -10,9 +10,9 @@ import { Helmet } from "react-helmet";
 function ProfileLayout() {
 
   const {username} = useParams();
-  const [loading, setLoading] = useState(true); 
+  // const [loading, setLoading] = useState(true); 
   const [user, setUser] = useState(null)
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     getUserInfo(username)
@@ -22,7 +22,7 @@ function ProfileLayout() {
     .catch(err => {
       setUser(false);
     })
-  }, [])
+  }, [username])
   if(user === false) {
     return <NotFound/>
   }
@@ -41,7 +41,7 @@ function ProfileLayout() {
       </Helmet>
       <Header user={user} />
       <nav className='border-t flex gap-x-16 justify-center items-center'>
-        <NavLink to={`/${username}`} end={true} className={ (isActive) => classNames({
+        <NavLink to={`/${username}`} end={true} className={ ({ isActive }) => classNames({
           "text-cs flex py-5 border-t tracking-widest -mt-px items-center gap-x-1.5 font-semibold": true,
           "text-[#8e8e8e] border-transparent": !isActive,
           "text-black border-black": isActive
