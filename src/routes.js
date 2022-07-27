@@ -3,12 +3,36 @@ import Home from "pages/Home";
 import Login from "pages/auth/Login";
 import Register from "pages/auth/Register";
 import AuthLayout from "pages/auth";
+import Layout from "pages/Layout";
+import ProfileLayout from "pages/profile";
+import ProfilePosts from "pages/profile/Posts";
+import ProfileTagged from "pages/profile/Tagged";
 
 const routes = [
 	{
 		path: '/',
-		element: <Home />,
-		auth: true
+		element: <Layout />,
+		auth: true,
+		children: [
+			{
+				index:true,
+				element: <Home/>
+			},
+			{
+				path:':username',
+				element: <ProfileLayout/>,
+				children: [
+					{
+						index: true,
+						element: <ProfilePosts/>
+					},
+					{
+						path:'tagged',
+						element:<ProfileTagged/>
+					}
+				]
+			}
+		]
 	},
 	{
 		path: '/auth',
