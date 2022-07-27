@@ -5,6 +5,7 @@ import Header from './components/Header.js';
 import Icon from 'components/Icon.js';
 import classNames from 'classnames';
 import NotFound from './NotFound.js';
+import { Helmet } from "react-helmet";
 
 function ProfileLayout() {
 
@@ -35,6 +36,9 @@ function ProfileLayout() {
   }
   return user && (
     <div>
+      <Helmet>
+        <title>{user.fullName} (@{user.username}) • Instagram photos and videos</title>
+      </Helmet>
       <Header user={user} />
       <nav className='border-t flex gap-x-16 justify-center items-center'>
         <NavLink to={`/${username}`} end={true} className={ (isActive) => classNames({
