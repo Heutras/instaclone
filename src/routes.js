@@ -7,6 +7,9 @@ import Layout from "pages/Layout";
 import ProfileLayout from "pages/profile";
 import ProfilePosts from "pages/profile/Posts";
 import ProfileTagged from "pages/profile/Tagged";
+import InboxLayout from "pages/inbox";
+import Inbox from "pages/inbox/Inbox";
+import Chat from "pages/inbox/chat";
 
 const routes = [
 	{
@@ -30,6 +33,21 @@ const routes = [
 						path:'tagged',
 						element:<ProfileTagged/>
 					}
+				]
+			},
+			{
+				path: 'inbox',
+				element: <InboxLayout />,
+				children: [
+					{
+					index: true,
+					element: <Inbox/>
+					},
+					{
+					index: true,
+					element: <Chat/>
+					},
+				
 				]
 			}
 		]
