@@ -4,6 +4,7 @@ import classNames from "classnames";
 export default function ChatList() {
 
 	const {conversationId} = useParams()
+	console.log(conversationId,'conv id bu');
 	const chats = [
 		{
 			id: 1,

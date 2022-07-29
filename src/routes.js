@@ -44,7 +44,7 @@ const routes = [
 					element: <Inbox/>
 					},
 					{
-					index: true,
+					path: ':conversationId',
 					element: <Chat/>
 					},
 				

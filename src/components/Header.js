@@ -1,6 +1,5 @@
 import {Link, NavLink} from "react-router-dom";
 import Search from "components/Search";
-import {logout} from "firebase.js";
 import Icon from "components/Icon";
 import {useSelector} from "react-redux";
 import classNames from "classnames";
@@ -14,10 +13,8 @@ export default function Header() {
 			<div className="flex items-center justify-between h-[60px] container mx-auto">
 
 				<Link to="/">
-					<img className="h-[29px]"
-							 src="https://www.instagram.com/static/images/web/logged_out_wordmark-2x.png/d2529dbef8ed.png"/>
+					<img className="h-[29px]" src="https://www.instagram.com/static/images/web/logged_out_wordmark-2x.png/d2529dbef8ed.png" alt="template "/>
 				</Link>
-
 				<Search/>
 
 				<nav className="flex items-center gap-x-5">
@@ -37,7 +34,7 @@ export default function Header() {
 						<Icon name="heart" size={24} />
 					</NavLink>
 					<NavLink to={`/${user.username}`}>
-						{({isActive}) => <img src="/no-avatar.jpg" alt="" className={classNames({
+						{({isActive}) => <img src="/no-avatar.jpg" alt="pp" className={classNames({
 							"w-6 h-6 rounded-full": true,
 							"ring-1 ring-offset-1	ring-black": isActive
 						})}/>}

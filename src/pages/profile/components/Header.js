@@ -1,9 +1,10 @@
 import React from 'react'
+import { logout } from 'firebase.js';
 
 function Header({ user }) {
   return (
     <header className='flex items-center gap-x-6 px-24 gap-x-24 py-4 pb-10'>
-      <img src="/no-avatar.jpg" alt="pp" className='w-[150px] h-[150px] rounded-full'/>
+      <img src="/no-avatar.jpg" alt="pp" className='w-[150px] h-[150px] rounded-full' onClick={logout}/>
       <div className='mb-4'>
         <h1 className='text-[28px] font-light'>{user.username}</h1>
       </div>
